@@ -47,13 +47,14 @@ public class TemperatureActivity extends AppCompatActivity {
         // 上传
         if (temperature != null) {
             Toast.makeText(this, "采集到的温度为：" + temperature, Toast.LENGTH_SHORT).show();
-            Toast.makeText(this, "正在上传温度数据..." + temperature, Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "正在上传温度数据..." , Toast.LENGTH_LONG).show();
 
             // 上传方法
 
 
         } else {
             Toast.makeText(this, "温度采集失败", Toast.LENGTH_SHORT).show();
+
         }
 
 

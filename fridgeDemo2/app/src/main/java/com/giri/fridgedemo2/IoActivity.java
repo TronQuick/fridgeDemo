@@ -19,10 +19,11 @@ public class IoActivity extends AppCompatActivity {
 
 
         // 上传限位开关的输出值
-        
+
 
         // 触发拍照
         startAutoCamera();
+
     }
 
     public void startAutoCamera() {
