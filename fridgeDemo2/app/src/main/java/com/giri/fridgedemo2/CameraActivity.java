@@ -87,6 +87,7 @@ public class CameraActivity extends AppCompatActivity {
                     // 接收拍摄数据
                     FileInputStream imageFis = new FileInputStream(imgRootPath);
                     Bitmap imageBmp = BitmapFactory.decodeStream(imageFis);
+
                     // 图片预览
                     cameraView.setImageBitmap(imageBmp);
 

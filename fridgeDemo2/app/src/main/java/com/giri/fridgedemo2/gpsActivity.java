@@ -40,6 +40,7 @@ public class gpsActivity extends AppCompatActivity {
         System.out.println(networkLocation);
 
         // 上传定位信息
+        Toast.makeText(this,"准备上传定位信息...",Toast.LENGTH_SHORT).show();
         uploadLocation(gpsLocation,networkLocation);
 
         finish();
@@ -100,9 +101,9 @@ public class gpsActivity extends AppCompatActivity {
                 public void onSuccessLocation(Location location) {
                     if (location != null) {
                         innerGps[0] = "GPS onSuccessLocation 定位信息:  lat==" + location.getLatitude() + "     lng==" + location.getLongitude();
-                        Toast.makeText(gpsActivity.this, innerGps[0], Toast.LENGTH_SHORT).show();
+                            Toast.makeText(gpsActivity.this, innerGps[0], Toast.LENGTH_LONG).show();
                     } else {
-                        Toast.makeText(gpsActivity.this, innerGps[0], Toast.LENGTH_SHORT).show();
+                        Toast.makeText(gpsActivity.this, innerGps[0], Toast.LENGTH_LONG).show();
                     }
                 }
             });
@@ -131,11 +132,11 @@ public class gpsActivity extends AppCompatActivity {
         // 判断获取结果
         if (net == null) {
             // 获取失败，弹出提示
-            Toast.makeText(this, networkLocation, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, networkLocation, Toast.LENGTH_LONG).show();
         } else {
             // 获取成功，弹出结果
             networkLocation = "网络定位信息: lat==" + net.getLatitude() + "  lng==" + net.getLongitude();
-            Toast.makeText(this, networkLocation, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, networkLocation, Toast.LENGTH_LONG).show();
         }
         return networkLocation;
     }
@@ -145,7 +146,7 @@ public class gpsActivity extends AppCompatActivity {
      * */
     public boolean uploadLocation(String gpsLocation,String networkLocation) {
         // 上传
-
+        Toast.makeText(this,"正在上传定位信息...",Toast.LENGTH_SHORT).show();
 
         // 判断上传是否完成
         if (1!=0) {

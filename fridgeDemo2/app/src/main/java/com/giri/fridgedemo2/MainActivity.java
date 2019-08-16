@@ -14,6 +14,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
+    // 自动拍照上传
+    public void startAutoCamera(View view) {
+        Intent intent = new Intent(this, AutoCameraActivity.class);
+        startActivity(intent);
+    }
+
     // 拍照上传
     public void startCamera(View view) {
         Intent intent = new Intent(this, CameraActivity.class);

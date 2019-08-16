@@ -10,4 +10,6 @@
     <string name="IO_btn">IO采集上传</string>
     <string name="tmp_btn">温度采集上传</string>
     <string name="reboot_btn">重启设备</string>
+    <string name="auto_iv">拍摄预览</string>
+    <string name="auto_btn">自动拍照上传</string>
 </resources>
