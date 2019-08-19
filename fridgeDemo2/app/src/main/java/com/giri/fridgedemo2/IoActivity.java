@@ -2,6 +2,7 @@ package com.giri.fridgedemo2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 /**
@@ -21,12 +22,14 @@ public class IoActivity extends AppCompatActivity {
         // 上传限位开关的输出值
 
 
-        // 触发拍照
-        startAutoCamera();
+        // 进行判断，触发拍照
+        if (1 != 0) {
+            Intent intent = new Intent(this, AutoCameraActivity.class);
+            startActivity(intent);
+        }
 
+        // 返回主界面
+        finish();
     }
 
-    public void startAutoCamera() {
-
-    }
 }

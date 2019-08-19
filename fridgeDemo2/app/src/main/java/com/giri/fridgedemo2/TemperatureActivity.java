@@ -26,7 +26,9 @@ import droi.sdk.api.SerialPort;
  *  范例： InputStream mInputStream = mSerialPort. getInputStream();
  *  mInputStream.read(byte);
  *
- *  函数：public InputStrem getOutputStream() 描述：串口写数据 范例： OutputStrem mOutputStrem = mSerialPort. getOutputStream(); OutputStream.write(byte)；
+ *  函数：public InputStrem getOutputStream()
+ *  描述：串口写数据
+ *  范例： OutputStrem mOutputStrem = mSerialPort. getOutputStream(); OutputStream.write(byte)；
  *
  **/
 
@@ -49,7 +51,7 @@ public class TemperatureActivity extends AppCompatActivity {
             Toast.makeText(this, "采集到的温度为：" + temperature, Toast.LENGTH_SHORT).show();
             Toast.makeText(this, "正在上传温度数据..." , Toast.LENGTH_LONG).show();
 
-            // 上传方法
+            // 上传方法...
 
 
         } else {

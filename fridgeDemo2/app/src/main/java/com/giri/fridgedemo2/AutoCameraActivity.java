@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.giri.fridgedemo2.Utils.PhotoActivity;
+import com.giri.fridgedemo2.Utils.UploadFileUtil;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -67,7 +68,7 @@ public class AutoCameraActivity extends AppCompatActivity {
 
         // 传入图片路径，进行上传
         File imgFile = new File(imgBackupPath);
-//                String imgUploadResult = UploadFileUtil.uploadFile(imgFile, "RequestURL");
+                String imgUploadResult = UploadFileUtil.uploadFile(imgFile, "RequestURL");
 
         // 通过imgUploadResult判断上传结果，200为上传成功,弹出提示
         if (1 != 0) {
