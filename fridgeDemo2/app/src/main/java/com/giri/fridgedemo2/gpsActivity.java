@@ -14,11 +14,11 @@ import android.os.Bundle;
 
 import android.widget.Toast;
 
-import com.giri.fridgedemo2.Utils.LocationUtils;
+import com.giri.fridgedemo2.utils.LocationUtils;
 
 /**
- *     获取当前位置（GPS、4G），上传到服务器后台
- * */
+ * 获取当前位置（GPS、4G），上传到服务器后台
+ */
 
 public class gpsActivity extends AppCompatActivity {
 
@@ -32,16 +32,15 @@ public class gpsActivity extends AppCompatActivity {
         context = getApplicationContext();
 
         // 获取 GPS 定位
-        String gpsLocation = getGPSLocation();
+        String gpsLocation[] = getGPSLocation();
         System.out.println(gpsLocation);
 
         // 获取 NetWork 定位
-        String networkLocation = getNetworkLocation();
+        String[] networkLocation = getNetworkLocation();
         System.out.println(networkLocation);
 
         // 上传定位信息
-        Toast.makeText(this,"准备上传定位信息...",Toast.LENGTH_SHORT).show();
-        uploadLocation(gpsLocation,networkLocation);
+        Toast.makeText(this, "准备上传定位信息...", Toast.LENGTH_SHORT).show();
 
         finish();
     }
@@ -53,8 +52,8 @@ public class gpsActivity extends AppCompatActivity {
     }
 
     /**
-     *  权限获取
-     * */
+     * 权限获取
+     */
     private void initPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             // 检查权限
@@ -84,14 +83,19 @@ public class gpsActivity extends AppCompatActivity {
 
     /**
      * 通过GPS获取定位信息
-     * @return String GPS定位信息
+     *
+     * @return String[] GPS定位信息
+     *         String[0] = GPS定位描述字符串
+     *         String[1] = GPS lat定位
+     *         String[2] = GPS lng定位
      */
-    public String getGPSLocation() {
+    public String[] getGPSLocation() {
         Location gps = LocationUtils.getGPSLocation(this);
 
-        final String[] innerGps = new String[1];
-        innerGps[0] = "未获取到GPS定位信息";
-        String gpsLocation ;
+        final String[] gpsLocation = new String[3];
+        gpsLocation[0] = "未获取到GPS定位信息";
+        gpsLocation[1] = "未获取到GPS.lat";
+        gpsLocation[2] = "未获取到GPS.lng";
 
         if (gps == null) {
             // 设置定位监听，因为GPS定位，第一次进来可能获取不到，通过设置监听，可以在有效的时间范围内获取定位信息
@@ -100,58 +104,66 @@ public class gpsActivity extends AppCompatActivity {
                 @Override
                 public void onSuccessLocation(Location location) {
                     if (location != null) {
-                        innerGps[0] = "GPS onSuccessLocation 定位信息:  lat==" + location.getLatitude() + "     lng==" + location.getLongitude();
-                            Toast.makeText(gpsActivity.this, innerGps[0], Toast.LENGTH_LONG).show();
+                        gpsLocation[0] = "GPS onSuccessLocation 定位信息:  lat==" + location.getLatitude() + "     lng==" + location.getLongitude();
+                        gpsLocation[1] = location.getLatitude()+"";
+                        gpsLocation[2] = location.getLongitude()+"";
+                        Toast.makeText(gpsActivity.this, gpsLocation[0], Toast.LENGTH_LONG).show();
                     } else {
-                        Toast.makeText(gpsActivity.this, innerGps[0], Toast.LENGTH_LONG).show();
+                        Toast.makeText(gpsActivity.this, gpsLocation[0], Toast.LENGTH_LONG).show();
                     }
                 }
             });
 
         } else {
-            innerGps[0] = "GPS定位信息: lat==" + gps.getLatitude() + "  lng==" + gps.getLongitude();
-            Toast.makeText(this,innerGps[0] , Toast.LENGTH_SHORT).show();
+            gpsLocation[0] = "GPS定位信息: lat==" + gps.getLatitude() + "  lng==" + gps.getLongitude();
+            gpsLocation[1] = gps.getLatitude()+"";
+            gpsLocation[2] = gps.getLongitude()+"";
+            Toast.makeText(this, gpsLocation[0], Toast.LENGTH_SHORT).show();
         }
-
-        gpsLocation = innerGps[0];
-
         return gpsLocation;
     }
 
     /**
      * 通过网络获取定位信息
-     * @return String 网络定位信息
-     *
+     * @return String[] 网络定位信息
+     *         String[0] = 网络定位描述字符串
+     *         String[1] = 网络定位 lat定位
+     *         String[2] = 网络定位 lng定位
      */
-    private String getNetworkLocation() {
+    private String[] getNetworkLocation() {
         // 获取网络定位
         Location net = LocationUtils.getNetWorkLocation(this);
+        String[] networkLocation = new String[3];
 
-        String networkLocation = "未获取到网络定位信息";
+        networkLocation[0] = "未获取到网络定位信息";
+        networkLocation[1] = "未获取到 networkLocation.lat";
+        networkLocation[2] = "未获取到 networkLocation.lng";
 
         // 判断获取结果
         if (net == null) {
             // 获取失败，弹出提示
-            Toast.makeText(this, networkLocation, Toast.LENGTH_LONG).show();
+            Toast.makeText(this, networkLocation[0], Toast.LENGTH_LONG).show();
         } else {
             // 获取成功，弹出结果
-            networkLocation = "网络定位信息: lat==" + net.getLatitude() + "  lng==" + net.getLongitude();
-            Toast.makeText(this, networkLocation, Toast.LENGTH_LONG).show();
+            networkLocation[0] = "网络定位信息: lat==" + net.getLatitude() + "  lng==" + net.getLongitude();
+            networkLocation[1] = net.getLatitude()+"";
+            networkLocation[2] = net.getLongitude()+"";
+            Toast.makeText(this, networkLocation[0], Toast.LENGTH_LONG).show();
         }
         return networkLocation;
     }
 
     /**
-     *  定位上传方法
-     * */
-    public boolean uploadLocation(String gpsLocation,String networkLocation) {
+     * 定位上传方法
+     */
+    public boolean uploadLocation(String gpsLocation, String networkLocation) {
         // 上传
-        Toast.makeText(this,"正在上传定位信息...",Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "正在上传定位信息...", Toast.LENGTH_SHORT).show();
 
         // 判断上传是否完成
-        if (1!=0) {
+        if (1 != 0) {
             Toast.makeText(this, "定位信息上传成功", Toast.LENGTH_SHORT).show();
             return true;
-        }else return false;
+        } else return false;
     }
 }

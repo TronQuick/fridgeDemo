@@ -15,8 +15,6 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.giri.fridgedemo2.Utils.UploadFileUtil;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -27,8 +25,8 @@ import java.util.Date;
 
 
 /**
- *      拍照并上传到服务器接口
- * */
+ * 拍照并上传到服务器接口
+ */
 
 public class CameraActivity extends AppCompatActivity {
 
@@ -71,13 +69,13 @@ public class CameraActivity extends AppCompatActivity {
         captureIntent.putExtra(MediaStore.EXTRA_OUTPUT, imgUri);
 
         cameraView = findViewById(R.id.cameraView);
-        startActivityForResult(captureIntent,REQ_1);
+        startActivityForResult(captureIntent, REQ_1);
     }
 
 
     /**
-     *     处理拍摄图片
-     * */
+     * 处理拍摄图片
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -113,23 +111,25 @@ public class CameraActivity extends AppCompatActivity {
                 }
 
             }
-        }else{
+        } else {
 
-            finish();}
+            finish();
+        }
 
     }
 
 
     /**
-     *     本地储存方法
-     *    路径：/储存根目录/fridge/
-     *    @return 文件完整路径
-     *    @param name 自定义储存文件名
-     *    @param bmp bitmap
-     * */
+     * 本地储存方法
+     * 路径：/储存根目录/fridge/
+     *
+     * @param name 自定义储存文件名
+     * @param bmp  bitmap
+     * @return 文件完整路径
+     */
     public String saveImage(String name, Bitmap bmp) {
 
-        File appDir = new File(Environment.getExternalStorageDirectory(),"CameraBackUp");
+        File appDir = new File(Environment.getExternalStorageDirectory(), "CameraBackUp");
         if (!appDir.exists()) {
             appDir.mkdir();
         }
@@ -149,7 +149,7 @@ public class CameraActivity extends AppCompatActivity {
 
 
     /**
-     *  返回按钮
+     * 返回按钮
      */
     public void backHome(View view) {
         finish();

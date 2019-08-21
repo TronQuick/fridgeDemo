@@ -18,8 +18,8 @@ public class RebootDeviceActivity extends AppCompatActivity {
 
 
     /**
-     *      重启设备
-     * */
+     * 重启设备
+     */
     public void reboot() {
         Droitech droitech = new Droitech(this);
         droitech.reboot();

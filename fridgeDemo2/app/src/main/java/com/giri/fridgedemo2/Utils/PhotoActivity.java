@@ -1,4 +1,4 @@
-package com.giri.fridgedemo2.Utils;
+package com.giri.fridgedemo2.utils;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -14,7 +14,6 @@ import android.os.Handler;
 import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 

@@ -49,7 +49,7 @@ public class TemperatureActivity extends AppCompatActivity {
         // 上传
         if (temperature != null) {
             Toast.makeText(this, "采集到的温度为：" + temperature, Toast.LENGTH_SHORT).show();
-            Toast.makeText(this, "正在上传温度数据..." , Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "正在上传温度数据...", Toast.LENGTH_LONG).show();
 
             // 上传方法...
 
@@ -65,9 +65,10 @@ public class TemperatureActivity extends AppCompatActivity {
 
     /**
      * 获取串口、读取串口数据、获取温度
+     *
      * @return Double 温度
-     *         0x61
-     *          0x3A
+     * 0x61
+     * 0x3A
      */
     public Double getTemperature() {
 
@@ -112,7 +113,7 @@ public class TemperatureActivity extends AppCompatActivity {
             for (int i = 0; i < realLength; i++) {
 
                 // C#:double ecL = (double.Parse(receiveByte[3].ToString())) * 256 + double.Parse(receiveByte[4].ToString("F2"));
-                double ecL = (Double.parseDouble(receiveByte[3]+"")) * 256 + Double.parseDouble(receiveByte[4]+"");
+                double ecL = (Double.parseDouble(receiveByte[3] + "")) * 256 + Double.parseDouble(receiveByte[4] + "");
                 temperature = ecL * 0.1;
                 String result = "第1触头：" + "returns_Value：" + ecL + "\n" + "第1触头：" + "temperature：" + temperature;
                 System.out.println(result);

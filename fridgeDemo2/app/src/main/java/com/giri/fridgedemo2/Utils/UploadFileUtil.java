@@ -1,4 +1,4 @@
-package com.giri.fridgedemo2.Utils;
+package com.giri.fridgedemo2.utils;
 
 import android.util.Log;
 
