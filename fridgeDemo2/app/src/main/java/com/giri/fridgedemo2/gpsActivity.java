@@ -40,7 +40,7 @@ public class gpsActivity extends AppCompatActivity {
         System.out.println(networkLocation);
 
         // 上传定位信息
-        Toast.makeText(this, "准备上传定位信息...", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "准备上传定位信息...", Toast.LENGTH_SHORT).show();
 
         finish();
     }
@@ -158,11 +158,11 @@ public class gpsActivity extends AppCompatActivity {
      */
     public boolean uploadLocation(String gpsLocation, String networkLocation) {
         // 上传
-        Toast.makeText(this, "正在上传定位信息...", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "正在上传定位信息...", Toast.LENGTH_SHORT).show();
 
         // 判断上传是否完成
         if (1 != 0) {
-            Toast.makeText(this, "定位信息上传成功", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "定位信息上传成功", Toast.LENGTH_SHORT).show();
             return true;
         } else return false;
     }

@@ -83,7 +83,7 @@ public class AutoCameraActivity extends AppCompatActivity {
         uploadImage.setDeviceName(deviceName);
         uploadImage.setPhotoData(photoData);
         Gson gson = new Gson();
-        String jsonString = gson.toJson(uploadImage);
+        String jsonUploadImage = gson.toJson(uploadImage);
 
         // okHttp进行请求
 

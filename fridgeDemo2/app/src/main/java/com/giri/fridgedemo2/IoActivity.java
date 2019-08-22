@@ -2,11 +2,12 @@ package com.giri.fridgedemo2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.giri.fridgedemo2.utils.GPIOUtil;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 
 /**
@@ -54,41 +55,53 @@ public class IoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_io);
 
-        // 获取限位开关的输出值
-        GPIOUtil gpioUtil = new GPIOUtil();
-//
-//        // 设置GPIO口为输入模式
-//        gpioUtil.gpio_input();
-//
-//        // 设置GPIO口为输出模式
-//        gpioUtil.gpio_output();
-//
-//        // 设置GPIO口为高电平
-//        gpioUtil.set_gpio_high();
-//
-//        // 设置GPIO口为低电平
-//        gpioUtil.set_gpio_low();
-
-        // 读取GPIO
+        // 获取限位开关的输出值,获取柜门状态（1/0）
         String gpioPath = "/sys/devices/virtual/misc/mtgpio/pin";
-        String gpioString = gpioUtil.getGpioString(gpioPath);
+        String doorStatus = getGpioString(gpioPath);
 
-        // 要求获取65的第三位：1 / 0
-        System.out.println(gpioString);
-        Toast.makeText(this,gpioString,Toast.LENGTH_LONG).show();
+        // 输出提示柜门状态
+        Toast.makeText(this,"柜门状态: "+doorStatus,Toast.LENGTH_SHORT).show();
 
         // doorStatus柜门状态
 
 
-
         // 进行判断，触发拍照
         if (1 != 0) {
-            Intent intent = new Intent(this, AutoCameraActivity.class);
-            startActivity(intent);
+//            Intent intent = new Intent(this, AutoCameraActivity.class);
+//            startActivity(intent);
         }
 
         // 返回主界面
         finish();
+    }
+
+    /**
+     *  已改写方法，调用方法会 直接返回柜门状态 String "1"或 "0"
+     * */
+    public String getGpioString(String path) {
+        String defString = "";// 默认值
+        // 创建接收缓冲区
+        char[] buffer = new char[2048];
+        int charNum ;
+        try {
+            @SuppressWarnings("resource")
+            BufferedReader reader = new BufferedReader(new FileReader(path));
+            charNum = reader.read(buffer);
+
+            /**
+             *      经测试，buffer[990] 为 "65:00*01010" 中的 "6"，
+             *      要求获取65的第三位，柜门状态设定为65的第三位，
+             *      因此获取并返回 buffer[995]
+             * */
+            // 65~68为buffer[990]~buffer[1040]
+//            for (int i = 990; i < 1040 ; i++) {
+//                defString = defString + buffer[i];
+//            }
+            defString = buffer[995]+"";
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return defString;
     }
 
 }
