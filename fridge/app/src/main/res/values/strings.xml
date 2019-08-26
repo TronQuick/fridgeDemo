@@ -1,3 +1,10 @@
 <resources>
+    <!--上传实时数据的URL-->
+    <string name="uploadDataURL">http://192.168.200.92:3000/upload/uploadData</string>
+    <!--上传实时图片的URL-->
+    <string name="uploadImageURL">http://192.168.200.92:3000/upload/uploadImage</string>
+
+    <!--UI文本-->
     <string name="app_name">fridge</string>
+    <string name="auto_iv">拍摄预览</string>
 </resources>

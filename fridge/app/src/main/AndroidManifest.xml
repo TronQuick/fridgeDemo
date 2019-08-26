@@ -1,23 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.giri.fridge">
-
-    <!--蓝牙权限-->
-    <uses-permission android:name="android.permission.BLUETOOTH"/>
-    <!--读取设备信息权限-->
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-    <!-- 联网权限 -->
-    <uses-permission android:name="android.permission.INTERNET" />
-    <!-- 相机权限 -->
+    <!-- 蓝牙权限 -->
+    <uses-permission android:name="android.permission.BLUETOOTH" /> <!-- 读取设备信息权限 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!-- 联网权限 -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- 相机权限 -->
     <uses-permission android:name="android.permission.CAMERA" />
+
     <uses-feature android:name="android.hardware.camera" />
-    <uses-feature android:name="android.hardware.camera.autofocus" />
-    <!-- 储存读写权限 -->
+    <uses-feature android:name="android.hardware.camera.autofocus" /> <!-- 储存读写权限 -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <!-- 连接互联网Internet权限 -->
-    <uses-permission android:name="android.permission.INTERNET" />
-    <!-- 定位权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 连接互联网Internet权限 -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- 定位权限 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -29,6 +23,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".utils.PhotoActivity"></activity>
+        <activity android:name=".AutoCameraActivity"></activity>
+        <receiver
+            android:name=".AlarmReceiver"
+            android:enabled="true"
+            android:exported="true" />
+
+        <service
+            android:name=".HorizonService"
+            android:enabled="true"
+            android:exported="true" />
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
