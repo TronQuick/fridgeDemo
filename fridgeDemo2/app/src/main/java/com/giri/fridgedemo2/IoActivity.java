@@ -62,14 +62,6 @@ public class IoActivity extends AppCompatActivity {
         // 输出提示柜门状态
         Toast.makeText(this,"柜门状态: "+doorStatus,Toast.LENGTH_SHORT).show();
 
-        // doorStatus柜门状态
-
-
-        // 进行判断，触发拍照
-        if (1 != 0) {
-//            Intent intent = new Intent(this, AutoCameraActivity.class);
-//            startActivity(intent);
-        }
 
         // 返回主界面
         finish();
